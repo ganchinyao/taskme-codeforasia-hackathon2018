@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
@@ -53,18 +52,18 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     private Random rand;
     private boolean searchClicked = false;
 
-    int imageIdResource [] = {R.drawable.hdbroom, R.drawable.dogstock, R.drawable.pizzastock, R.drawable.chipsstock, R.drawable.hdb2,
+    int imageIdResource[] = {R.drawable.hdbroom, R.drawable.dogstock, R.drawable.pizzastock, R.drawable.chipsstock, R.drawable.hdb2,
             R.drawable.sample1, R.drawable.sample1, R.drawable.sample1,};
-    CharSequence profileName [] = {"", "", "", "", "", "", "", ""};
-    CharSequence title [] = {"", "", "", "", "", "", "", ""};
-    CharSequence desc [] = {"Need help to clean my living room! For 3 hrs, I will be paying $60. It will be on October 25 4pm-7pm. Let me know if you are interested!",
+    CharSequence profileName[] = {"", "", "", "", "", "", "", ""};
+    CharSequence title[] = {"", "", "", "", "", "", "", ""};
+    CharSequence desc[] = {"Need help to clean my living room! For 3 hrs, I will be paying $60. It will be on October 25 4pm-7pm. Let me know if you are interested!",
             "Need your help to walk my dog as I have been very busy recently. He is very obedient, and will not bark at other people. Pleasant dog!",
             "Teach me to make pizza! I want to learn to make pizza for my girlfriend. I am looking at Cheese Pizza. Let me know if you are interested!",
             "I am craving for potato chips. Please get me Lays Barbeque chips. 2 big pack. Willing to pay you $5 on top of the price for the chips.",
             "Clean my kitchen for me. It is a typical HDB 4-room flat kitchen size. Job is on October 26 2-6pm. Willing to pay $60 for the whole duration.", "6", "7", "8"};
-    CharSequence price [] = {"", "", "", "", "", "", "", ""};
-    CharSequence location [] = {"", "", "", "", "", "", "", ""};
-    CharSequence timing [] = {"", "", "", "", "", "", "", ""};
+    CharSequence price[] = {"", "", "", "", "", "", "", ""};
+    CharSequence location[] = {"", "", "", "", "", "", "", ""};
+    CharSequence timing[] = {"", "", "", "", "", "", "", ""};
     int[] imageId = {R.id.mainimageview_item1, R.id.mainimageview_item2, R.id.mainimageview_item3, R.id.mainimageview_item4, R.id.mainimageview_item5,
             R.id.mainimageview_item6, R.id.mainimageview_item7, R.id.mainimageview_item8,};
     int[] contactId = {R.id.contact_item1, R.id.contact_item2, R.id.contact_item3, R.id.contact_item4, R.id.contact_item5,
@@ -72,7 +71,8 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     int[] titleId = {R.id.titletextview_item1, R.id.titletextview_item2, R.id.titletextview_item3, R.id.titletextview_item4, R.id.titletextview_item5,
             R.id.titletextview_item6, R.id.titletextview_item7, R.id.titletextview_item8};
 
-    String [] imagePath = {"", "", "", "", "", "", "", ""};
+    String[] imagePath = {"", "", "", "", "", "", "", ""};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,7 +130,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
         addMapMarker();
 
-        mMap.moveCamera( CameraUpdateFactory.newLatLngZoom(new LatLng(1.2966,103.7764) , 14.0f) );
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(1.2966, 103.7764), 14.0f));
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
@@ -146,8 +146,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                         (this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                         &&
                         ActivityCompat.checkSelfPermission
-                                (this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-                {
+                                (this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     requestPermissions(new String[]{
                             Manifest.permission.ACCESS_COARSE_LOCATION,
                             Manifest.permission.ACCESS_FINE_LOCATION
@@ -164,12 +163,9 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void mapSpinner() {
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
-// Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.map_array, R.layout.map_spinner);
-// Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(R.layout.map_spinner);
-// Apply the adapter to the spinner
         spinner.setAdapter(adapter);
         spinner.setSelection(0);
 
@@ -235,56 +231,56 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void addBabySittingMarker() {
-        for(int i = 0; i < 40; i++) {
+        for (int i = 0; i < 40; i++) {
             Marker marker =
                     mMap.addMarker(new MarkerOptions().position(new LatLng(randomFloat(1.3f, 1.4f), randomFloat(103.67f, 103.95f)))
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.baby)));
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.baby)));
             marker.setTag(Category.BABY_SITTING);
 
         }
     }
 
     private void addCleaningMarker() {
-        for(int i = 0; i < 40; i++) {
+        for (int i = 0; i < 40; i++) {
             Marker marker =
-                mMap.addMarker(new MarkerOptions().position(new LatLng(randomFloat(1.3f, 1.4f), randomFloat(103.67f, 103.95f)))
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.cleaning)));
+                    mMap.addMarker(new MarkerOptions().position(new LatLng(randomFloat(1.3f, 1.4f), randomFloat(103.67f, 103.95f)))
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.cleaning)));
             marker.setTag(Category.CLEANING);
         }
     }
 
     private void addCookingMarker() {
-        for(int i = 0; i < 50; i++) {
+        for (int i = 0; i < 50; i++) {
             Marker marker =
                     mMap.addMarker(new MarkerOptions().position(new LatLng(randomFloat(1.3f, 1.4f), randomFloat(103.67f, 103.95f)))
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.cooking)));
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.cooking)));
             marker.setTag(Category.COOKING);
         }
     }
 
     private void addGroceryShoppingMarker() {
-        for(int i = 0; i < 50; i++) {
+        for (int i = 0; i < 50; i++) {
             Marker marker =
                     mMap.addMarker(new MarkerOptions().position(new LatLng(randomFloat(1.3f, 1.4f), randomFloat(103.67f, 103.95f)))
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.shopping)));
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.shopping)));
             marker.setTag(Category.GROCERY_SHOPPING);
         }
     }
 
     private void addPetsMarker() {
-        for(int i = 0; i < 50; i++) {
+        for (int i = 0; i < 50; i++) {
             Marker marker =
                     mMap.addMarker(new MarkerOptions().position(new LatLng(randomFloat(1.3f, 1.4f), randomFloat(103.67f, 103.95f)))
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.dog)));
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.dog)));
             marker.setTag(Category.WALK_PETS);
         }
     }
 
     private void addOthersMarker() {
-        for(int i = 0; i < 50; i++) {
+        for (int i = 0; i < 50; i++) {
             Marker marker =
                     mMap.addMarker(new MarkerOptions().position(new LatLng(randomFloat(1.3f, 1.4f), randomFloat(103.67f, 103.95f)))
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.other)));
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.other)));
             marker.setTag(Category.OTHERS);
         }
     }
@@ -330,20 +326,18 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         switch (requestCode) {
 
             case 1:
-                if (grantResults[0] != PackageManager.PERMISSION_GRANTED){
+                if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
 
-                }
-                else {
+                } else {
 
                 }
                 break;
 
             case 2:
-                if (grantResults[0] != PackageManager.PERMISSION_GRANTED){
+                if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     setImageToSelected(R.id.homepage_home);
                     removeSearchLayout();
-                }
-                else {
+                } else {
                     setImageToSelected(R.id.homepage_sell);
                     removeSearchLayout();
                     sell();
@@ -473,14 +467,14 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void sell() {
-        if(isStoragePermissionGranted()) {
+        if (isStoragePermissionGranted()) {
             CropImage.startPickImageActivity(MainActivity.this);
         }
 
 
     }
 
-    public  boolean isStoragePermissionGranted() {
+    public boolean isStoragePermissionGranted() {
         if (Build.VERSION.SDK_INT >= 23) {
             if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     == PackageManager.PERMISSION_GRANTED) {
@@ -489,8 +483,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                 requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
                 return false;
             }
-        }
-        else { //permission is automatically granted on sdk<23 upon installation
+        } else { //permission is automatically granted on sdk<23 upon installation
             return true;
         }
     }
@@ -498,7 +491,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     private void removeSearchLayout() {
         findViewById(R.id.activitypage_textView).setVisibility(View.INVISIBLE);
         findViewById(R.id.profilepage_textView).setVisibility(View.INVISIBLE);
-        if(searchClicked) {
+        if (searchClicked) {
             searchClicked = false;
             findViewById(R.id.homepage_topsearch).setVisibility(View.INVISIBLE);
             findViewById(R.id.searchword).setVisibility(View.INVISIBLE);
@@ -535,58 +528,42 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         findViewById(R.id.searchword).setVisibility(View.VISIBLE);
         findViewById(R.id.searchLayout).setVisibility(View.VISIBLE);
 
-        for(int i = 6; i <= Utils.getNumberOfItemPosted(this); i++) {
-            String title2= "title" + i;
-            String profileName2= "profileName" + i;
+        for (int i = 6; i <= Utils.getNumberOfItemPosted(this); i++) {
+            String title2 = "title" + i;
+            String profileName2 = "profileName" + i;
             String description2 = "description" + i;
             String price2 = "price" + i;
             String location2 = "location" + i;
             String timing2 = "timing" + i;
             String imagePath2 = "imagePath" + i;
 
-            title[i - 1] = Utils.getListing(title2,MainActivity.this);
-            profileName[i - 1] = Utils.getListing(profileName2,MainActivity.this);
-            price[i - 1] = Utils.getListing(price2,MainActivity.this);
-            location[i - 1] = Utils.getListing(location2,MainActivity.this);
-            timing[i-1] = Utils.getListing(timing2,MainActivity.this);
-            desc[i-1] = Utils.getListing(description2,MainActivity.this);
-            imagePath[i-1] = Utils.getListing(imagePath2,MainActivity.this);
+            title[i - 1] = Utils.getListing(title2, MainActivity.this);
+            profileName[i - 1] = Utils.getListing(profileName2, MainActivity.this);
+            price[i - 1] = Utils.getListing(price2, MainActivity.this);
+            location[i - 1] = Utils.getListing(location2, MainActivity.this);
+            timing[i - 1] = Utils.getListing(timing2, MainActivity.this);
+            desc[i - 1] = Utils.getListing(description2, MainActivity.this);
+            imagePath[i - 1] = Utils.getListing(imagePath2, MainActivity.this);
 
-            newItemPosted(i, (String) profileName[i-1], (String) title[i-1], (String) price[i-1], (String) timing[i-1], (String) location[i-1]);
-Log.e("ddd", "gg " + imagePath[i-1]);
-Log.e("ddd", "gg2 " + Utils.getListing(imagePath2,MainActivity.this));
+            newItemPosted(i, (String) profileName[i - 1], (String) title[i - 1], (String) price[i - 1], (String) timing[i - 1], (String) location[i - 1]);
             switch (i) {
                 case 6:
                     findViewById(R.id.item6).setVisibility(View.VISIBLE);
-//                    String title= "title" + Utils.getNumberOfItemPosted(MainActivity.this);
-//                    String profileName= "profileName" + Utils.getNumberOfItemPosted(MainActivity.this);
-//                    String description= "description" + Utils.getNumberOfItemPosted(MainActivity.this);
-//                    String price= "price" + Utils.getNumberOfItemPosted(MainActivity.this);
-//                    String location= "location" + Utils.getNumberOfItemPosted(MainActivity.this);
-//                    String timing= "timing" + Utils.getNumberOfItemPosted(MainActivity.this);
-//                    String imagePath= "imagePath" + Utils.getNumberOfItemPosted(MainActivity.this);
-//                    ((TextView) findViewById(R.id.profilenametextview_item6)).setText(Utils.getListing(profileName, MainActivity.this));
-//                    ((TextView) findViewById(R.id.titletextview_item6)).setText(Utils.getListing(title, MainActivity.this));
-//                    desc[5] = Utils.getListing(description, MainActivity.this);
-//                    ((TextView) findViewById(R.id.pricetextview_item6)).setText(Utils.getListing(price, MainActivity.this));
-//                    ((TextView) findViewById(R.id.locationtextview_item6)).setText(Utils.getListing(location, MainActivity.this));
-//                    ((TextView) findViewById(R.id.timerequired_item6)).setText(Utils.getListing(timing, MainActivity.this));
-                    ((ImageView) findViewById(R.id.mainimageview_item6)).setImageURI(Uri.parse(imagePath[i-1]));
+                    ((ImageView) findViewById(R.id.mainimageview_item6)).setImageURI(Uri.parse(imagePath[i - 1]));
 
                     break;
                 case 7:
                     findViewById(R.id.item7).setVisibility(View.VISIBLE);
-                    ((ImageView) findViewById(R.id.mainimageview_item7)).setImageURI(Uri.parse(imagePath[i-1]));
+                    ((ImageView) findViewById(R.id.mainimageview_item7)).setImageURI(Uri.parse(imagePath[i - 1]));
                     break;
                 case 8:
                     findViewById(R.id.item8).setVisibility(View.VISIBLE);
-                    ((ImageView) findViewById(R.id.mainimageview_item8)).setImageURI(Uri.parse(imagePath[i-1]));
+                    ((ImageView) findViewById(R.id.mainimageview_item8)).setImageURI(Uri.parse(imagePath[i - 1]));
 
                     break;
             }
         }
-Log.e("ddd", "g: " + Utils.getNumberOfItemPosted(this));
-        for(int i = 0; i < Utils.getNumberOfItemPosted(this); i++) {
+        for (int i = 0; i < Utils.getNumberOfItemPosted(this); i++) {
             final int k = i;
             switch (i) {
                 case 0:
@@ -709,7 +686,7 @@ Log.e("ddd", "g: " + Utils.getNumberOfItemPosted(this));
     }
 
     public void newItemPosted(int index, String name, String title,
-                                     String price, String time, String address) {
+                              String price, String time, String address) {
         int nameId, titleId, imageId, priceId, timeId, addressId;
         switch (index) {
             case 6:
@@ -739,13 +716,13 @@ Log.e("ddd", "g: " + Utils.getNumberOfItemPosted(this));
                 addressId = R.id.locationtextview_item8;
                 findViewById(R.id.item8).setVisibility(View.VISIBLE);
                 break;
-                default:
-                    nameId = R.id.profilenametextview_item8;
-                    titleId = R.id.titletextview_item8;
-                    imageId = R.id.mainimageview_item8;
-                    priceId = R.id.pricetextview_item8;
-                    timeId = R.id.timerequired_item8;
-                    addressId = R.id.locationtextview_item8;
+            default:
+                nameId = R.id.profilenametextview_item8;
+                titleId = R.id.titletextview_item8;
+                imageId = R.id.mainimageview_item8;
+                priceId = R.id.pricetextview_item8;
+                timeId = R.id.timerequired_item8;
+                addressId = R.id.locationtextview_item8;
         }
 
         ((TextView) findViewById(nameId)).setText(name);
@@ -760,25 +737,25 @@ Log.e("ddd", "g: " + Utils.getNumberOfItemPosted(this));
     public boolean onMarkerClick(Marker marker) {
         Category category = (Category) marker.getTag();
         Intent intent = new Intent(MainActivity.this, SingleItemActivity.class);
-        TempInfo tempInfo = new TempInfo(Category.COOKING,rand.nextInt(TempInfo.size));
+        TempInfo tempInfo = new TempInfo(Category.COOKING, rand.nextInt(TempInfo.size));
         switch (category) {
             case COOKING:
-                tempInfo = new TempInfo(Category.COOKING,rand.nextInt(TempInfo.size));
+                tempInfo = new TempInfo(Category.COOKING, rand.nextInt(TempInfo.size));
                 break;
             case BABY_SITTING:
-                tempInfo = new TempInfo(Category.BABY_SITTING,rand.nextInt(TempInfo.size));
+                tempInfo = new TempInfo(Category.BABY_SITTING, rand.nextInt(TempInfo.size));
                 break;
             case CLEANING:
-                tempInfo = new TempInfo(Category.CLEANING,rand.nextInt(TempInfo.size));
+                tempInfo = new TempInfo(Category.CLEANING, rand.nextInt(TempInfo.size));
                 break;
             case GROCERY_SHOPPING:
-                tempInfo = new TempInfo(Category.GROCERY_SHOPPING,rand.nextInt(TempInfo.size));
+                tempInfo = new TempInfo(Category.GROCERY_SHOPPING, rand.nextInt(TempInfo.size));
                 break;
             case WALK_PETS:
-                tempInfo = new TempInfo(Category.WALK_PETS,rand.nextInt(TempInfo.size));
+                tempInfo = new TempInfo(Category.WALK_PETS, rand.nextInt(TempInfo.size));
                 break;
             case OTHERS:
-                tempInfo = new TempInfo(Category.OTHERS,rand.nextInt(TempInfo.size));
+                tempInfo = new TempInfo(Category.OTHERS, rand.nextInt(TempInfo.size));
                 break;
         }
 
@@ -795,53 +772,53 @@ Log.e("ddd", "g: " + Utils.getNumberOfItemPosted(this));
 }
 
 class TempInfo {
-    String [] profileName = {"Addison Ho"};
-    String [] title = {"Need help to learn how to cook!"};
-    String [] desc = {"I want to learn how to cook pasta for my girlfriend. Please assist!"};
-    String [] price = {"$50"};
-    String [] location = {"41 Clementi Avenue 1"};
-    String [] timing = {"October 21 2-4pm"};
-    int [] imageId = {R.drawable.pasta};
+    String[] profileName = {"Addison Ho"};
+    String[] title = {"Need help to learn how to cook!"};
+    String[] desc = {"I want to learn how to cook pasta for my girlfriend. Please assist!"};
+    String[] price = {"$50"};
+    String[] location = {"41 Clementi Avenue 1"};
+    String[] timing = {"October 21 2-4pm"};
+    int[] imageId = {R.drawable.pasta};
 
-    String [] profileNameBaby = {"Jack Chan"};
-    String [] titleBaby = {"Need help to help baby sit 2yrs old."};
-    String [] descBaby = {"I need help in baby sitting a 2yrs old kid for a day. Contact me if interested."};
-    String [] priceBaby = {"$50"};
-    String [] locationBaby = {"Jurong Easy"};
-    String [] timingBaby = {"October 21"};
-    int [] imageIdBaby = {R.drawable.baby};
+    String[] profileNameBaby = {"Jack Chan"};
+    String[] titleBaby = {"Need help to help baby sit 2yrs old."};
+    String[] descBaby = {"I need help in baby sitting a 2yrs old kid for a day. Contact me if interested."};
+    String[] priceBaby = {"$50"};
+    String[] locationBaby = {"Jurong Easy"};
+    String[] timingBaby = {"October 21"};
+    int[] imageIdBaby = {R.drawable.baby};
 
-    String [] profileNameCleaning = {"Jasmine Lyn"};
-    String [] titleCleaning = {"Looking for helper to clean my living room"};
-    String [] descCleaning = {"Just moved house. Need help to clean the living room. Pm me if interested."};
-    String [] priceCleaning = {"$50"};
-    String [] locationCleaning = {"Pioneer"};
-    String [] timingCleaning = {"October 21 2-4pm"};
-    int [] imageIdCleaning = {R.drawable.hdbroom};
+    String[] profileNameCleaning = {"Jasmine Lyn"};
+    String[] titleCleaning = {"Looking for helper to clean my living room"};
+    String[] descCleaning = {"Just moved house. Need help to clean the living room. Pm me if interested."};
+    String[] priceCleaning = {"$50"};
+    String[] locationCleaning = {"Pioneer"};
+    String[] timingCleaning = {"October 21 2-4pm"};
+    int[] imageIdCleaning = {R.drawable.hdbroom};
 
-    String [] profileNameShopping = {"Patty"};
-    String [] titleShopping = {"Help me buy some potato chips and soft drinks."};
-    String [] descShopping = {"Help me buy some chips and soft drinks by tonight. For party uses."};
-    String [] priceShopping = {"$10"};
-    String [] locationShopping = {"NUS Sheares Hall"};
-    String [] timingShopping = {"October 21 7pm"};
-    int [] imageIdShopping = {R.drawable.chipsstock};
+    String[] profileNameShopping = {"Patty"};
+    String[] titleShopping = {"Help me buy some potato chips and soft drinks."};
+    String[] descShopping = {"Help me buy some chips and soft drinks by tonight. For party uses."};
+    String[] priceShopping = {"$10"};
+    String[] locationShopping = {"NUS Sheares Hall"};
+    String[] timingShopping = {"October 21 7pm"};
+    int[] imageIdShopping = {R.drawable.chipsstock};
 
-    String [] profileNamePets = {"Yeslyn95"};
-    String [] titlePets = {"Wash my pet for me"};
-    String [] descPets = {"No time to wash my dog, hence need your help. He is very obedient and will not bark."};
-    String [] pricePet = {"$50"};
-    String [] locationPets = {"Boon Lay"};
-    String [] timingPets = {"October 21 2pm"};
-    int [] imageIdPets = {R.drawable.dogstock2};
+    String[] profileNamePets = {"Yeslyn95"};
+    String[] titlePets = {"Wash my pet for me"};
+    String[] descPets = {"No time to wash my dog, hence need your help. He is very obedient and will not bark."};
+    String[] pricePet = {"$50"};
+    String[] locationPets = {"Boon Lay"};
+    String[] timingPets = {"October 21 2pm"};
+    int[] imageIdPets = {R.drawable.dogstock2};
 
-    String [] profileNameOthers = {"Kelly"};
-    String [] titleOthers = {"[London] Buy adidas bag for me"};
-    String [] descOthers = {"If you are going London, need your help to buy an adidas bag."};
-    String [] priceOthers = {"$100"};
-    String [] locationOthers = {"London"};
-    String [] timingOthers = {"October 22"};
-    int [] imageIdOthers = {R.drawable.bagstock};
+    String[] profileNameOthers = {"Kelly"};
+    String[] titleOthers = {"[London] Buy adidas bag for me"};
+    String[] descOthers = {"If you are going London, need your help to buy an adidas bag."};
+    String[] priceOthers = {"$100"};
+    String[] locationOthers = {"London"};
+    String[] timingOthers = {"October 22"};
+    int[] imageIdOthers = {R.drawable.bagstock};
     public static int size = 1;
 
     private int id;

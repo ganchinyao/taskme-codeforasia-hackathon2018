@@ -43,15 +43,6 @@
                         />
 
 
-                    <!--<TextView-->
-                        <!--android:layout_width="@dimen/_40sdp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_alignParentRight="true"-->
-                        <!--android:text="@string/sell"-->
-                        <!--android:layout_centerVertical="true"-->
-                        <!--android:textSize="@dimen/_17sdp"-->
-                        <!--android:textColor="#000000"/>-->
-
                     <ImageView
                         android:id="@+id/homepage_topsearch"
                         android:layout_width="@dimen/_40sdp"

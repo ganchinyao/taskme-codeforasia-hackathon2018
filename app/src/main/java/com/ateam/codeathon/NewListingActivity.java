@@ -1,8 +1,6 @@
 package com.ateam.codeathon;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Handler;
@@ -10,7 +8,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -33,7 +30,7 @@ public class NewListingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.selling_page);
 
-        imgUri=Uri.parse(getIntent().getStringExtra("imageUri"));
+        imgUri = Uri.parse(getIntent().getStringExtra("imageUri"));
         ImageView imageView = findViewById(R.id.selling_coverphoto);
         imageView.setImageURI(imgUri);
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -145,12 +142,9 @@ public class NewListingActivity extends AppCompatActivity {
 
     private void initializeSpinner() {
         Spinner spinner = (Spinner) findViewById(R.id.sellspinner);
-// Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.category_array, R.layout.selling_spinner);
-// Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(R.layout.selling_spinner);
-// Apply the adapter to the spinner
         spinner.setAdapter(adapter);
         spinner.setSelection(0);
     }
@@ -168,13 +162,13 @@ public class NewListingActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Utils.setNumberOfItemPosted(NewListingActivity.this, Utils.getNumberOfItemPosted(NewListingActivity.this) + 1);
-                String title= "title" + Utils.getNumberOfItemPosted(NewListingActivity.this);
-                String profileName= "profileName" + Utils.getNumberOfItemPosted(NewListingActivity.this);
-                String desc= "description" + Utils.getNumberOfItemPosted(NewListingActivity.this);
-                String price= "price" + Utils.getNumberOfItemPosted(NewListingActivity.this);
-                String location= "location" + Utils.getNumberOfItemPosted(NewListingActivity.this);
-                String timing= "timing" + Utils.getNumberOfItemPosted(NewListingActivity.this);
-                String imagePath= "imagePath" + Utils.getNumberOfItemPosted(NewListingActivity.this);
+                String title = "title" + Utils.getNumberOfItemPosted(NewListingActivity.this);
+                String profileName = "profileName" + Utils.getNumberOfItemPosted(NewListingActivity.this);
+                String desc = "description" + Utils.getNumberOfItemPosted(NewListingActivity.this);
+                String price = "price" + Utils.getNumberOfItemPosted(NewListingActivity.this);
+                String location = "location" + Utils.getNumberOfItemPosted(NewListingActivity.this);
+                String timing = "timing" + Utils.getNumberOfItemPosted(NewListingActivity.this);
+                String imagePath = "imagePath" + Utils.getNumberOfItemPosted(NewListingActivity.this);
                 Utils.setListing(imagePath, NewListingActivity.this, imgUri.toString());
                 Utils.setListing(title, NewListingActivity.this, titleEditText.getText().toString());
                 Utils.setListing(profileName, NewListingActivity.this, "Team Clutch");
